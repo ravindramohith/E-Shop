@@ -6,7 +6,7 @@ const multerMiddleware = require('../middlewares/multerMiddleware');
 
 router.route('/')
     .get(controller.getAllProducts)
-    .post(multerMiddleware.uploadOptions.single('image'), controller.createProduct);
+    .post(authController.protect, authController.restrictToAdmin(), multerMiddleware.uploadOptions.single('image'), controller.createProduct);
 
 router.route('/:id')
     .get(mongooseIDValidation.mongooseIDValidation, controller.getProduct)
@@ -17,6 +17,6 @@ router.route('/get/featured/:count')
     .get(authController.protect, controller.getFeaturedProducts)
 
 router.route('/upload-gallery/:id')
-    .patch(multerMiddleware.uploadOptions.array('images', 10), controller.uploadGallery)
+    .patch(authController.protect, authController.restrictToAdmin(), mongooseIDValidation.mongooseIDValidation, multerMiddleware.uploadOptions.array('images', 10), controller.uploadGallery)
 
 module.exports = router
