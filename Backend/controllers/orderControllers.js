@@ -56,10 +56,9 @@ exports.getOrder = async (req, res) => {
     try {
         const order = await Order.findById(req.params.id).populate('user', 'name').populate({ path: 'orderItems', populate: { path: 'product', populate: 'category' } })
         if (!order) { return errorHandler(res, "Order not found", 404) }
-        console.log(req.user.id, order.user.id)
-        if (order.user.id !== req.user.id) {
-            return errorHandler(res, "You cannot view other user's orders", 403)
-        }
+        // if (order.user.id !== req.user.id) {
+        //     return errorHandler(res, "You cannot view other user's orders", 403)
+        // }
         res.status(200).json({ success: true, order })
     } catch (error) {
         console.log(error)
