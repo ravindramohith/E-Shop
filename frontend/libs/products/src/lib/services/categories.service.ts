@@ -13,7 +13,7 @@ export class CategoriesService {
   constructor(private http: HttpClient) { }
 
   getCategories(): Observable<any> {
-    return this.http.get<any>(`${process.env["NX_API"]}/categories`).pipe(map(response => response.success ? response.categories : []))
+    return this.http.get<any>(`${process.env["NX_API"]}/categories`)
   }
 
   getCategory(id: string): Observable<any> {

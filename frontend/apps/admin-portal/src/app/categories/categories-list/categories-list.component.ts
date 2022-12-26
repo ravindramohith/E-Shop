@@ -24,8 +24,12 @@ export class CategoriesListComponent {
   }
 
   private _getCategories() {
-    this.categoryService.getCategories().subscribe((data) => {
-      this.categories = data;
+    this.categoryService.getCategories().subscribe((response) => {
+      if (!response.success) {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: "Oops! Something went wrong..Please try again" });
+      } else {
+        this.categories = response.categories;
+      }
     })
   }
 
@@ -40,7 +44,7 @@ export class CategoriesListComponent {
             this._getCategories();
             this.messageService.add({ severity: 'success', summary: 'Success', detail: response.message });
           } else {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: "Oops! Something went wrong..Please try again" });
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: response.message ? response.message : "Oops! Something went wrong..Please try again" });
           }
         })
       },

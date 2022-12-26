@@ -24,9 +24,13 @@
           "apps/admin-portal/src/assets"
         ],
         "styles": [
-          "apps/admin-portal/src/styles.scss"
+          "apps/admin-portal/src/styles.scss",
+          "node_modules/quill/dist/quill.core.css",
+          "node_modules/quill/dist/quill.snow.css"
         ],
-        "scripts": [],
+        "scripts": [
+          "node_modules/quill/dist/quill.js"
+        ],
         "customWebpackConfig": {
           "path": "apps/admin-portal/webpack.config.js"
         }

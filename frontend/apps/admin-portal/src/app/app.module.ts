@@ -21,9 +21,16 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { EditorModule } from 'primeng/editor';
 
 import { CategoriesService } from '@frontend/products';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +40,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     SidebarComponent,
     CategoriesListComponent,
     CategoriesFormComponent,
+    ProductsListComponent,
+    ProductsFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +58,11 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     ToastModule,
     ConfirmDialogModule,
     ColorPickerModule,
+    InputNumberModule,
+    DropdownModule,
+    InputTextareaModule,
+    InputSwitchModule,
+    EditorModule,
   ],
   providers: [CategoriesService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],

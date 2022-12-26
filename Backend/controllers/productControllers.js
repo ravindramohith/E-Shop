@@ -63,6 +63,7 @@ exports.updateProduct = async (req, res) => {
                 product.rating = req.body.rating
                 product.brand = req.body.brand
                 product.name = req.body.name
+                product.price = req.body.price
                 await product.save();
                 res.status(200).json({ success: true, message: "Product updated successfully", product: product });
             }
