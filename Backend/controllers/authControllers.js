@@ -68,11 +68,12 @@ exports.Login = async (req, res) => {
 
 exports.SignUp = async (req, res) => {
     try {
-        req.body.passwordHash = bcrypt.hashSync(req.body.passwordHash, 10)
+        req.body.passwordHash = req.body.passwordHash ? bcrypt.hashSync(req.body.passwordHash, 10) : null
         const user = new User(req.body);
         await user.save();
         res.status(201).json({ success: true, user });
     } catch (error) {
+        console.log(error);
         res.status(500).json({ success: false, error: error })
     }
 }

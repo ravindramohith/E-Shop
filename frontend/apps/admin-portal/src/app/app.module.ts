@@ -26,11 +26,15 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { EditorModule } from 'primeng/editor';
+import { TagModule } from 'primeng/tag';
+import { InputMaskModule } from 'primeng/inputmask';
 
 import { CategoriesService } from '@frontend/products';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ProductsListComponent } from './pages/products/products-list/products-list.component';
 import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
+import { UsersFormComponent } from './pages/users/users-form/users-form.component';
+import { UsersListComponent } from './pages/users/users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +46,8 @@ import { ProductsFormComponent } from './pages/products/products-form/products-f
     CategoriesFormComponent,
     ProductsListComponent,
     ProductsFormComponent,
+    UsersFormComponent,
+    UsersListComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +69,8 @@ import { ProductsFormComponent } from './pages/products/products-form/products-f
     InputTextareaModule,
     InputSwitchModule,
     EditorModule,
+    TagModule,
+    InputMaskModule,
   ],
   providers: [CategoriesService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],

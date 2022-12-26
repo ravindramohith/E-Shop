@@ -4,9 +4,9 @@ const errorHandler = require('../utils/errorHandler');
 
 exports.getUser = async (req, res) => {
     try {
-        if (!(req.user.id === req.params.id || req.user.isAdmin)) {
-            return errorHandler(res, "You have no permission to perform this action.", 403)
-        }
+        // if (!(req.user.id === req.params.id || req.user.isAdmin)) {
+        //     return errorHandler(res, "You have no permission to perform this action.", 403)
+        // }
         const user = await User.findById(req.params.id).select('-passwordHash');
         if (!user) {
             return errorHandler(res, "User not found", 404);
@@ -30,9 +30,9 @@ exports.getUsers = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
     try {
-        if (!(req.user.id === req.params.id || req.user.isAdmin)) {
-            return errorHandler(res, "You have no permission to perform this action.", 403)
-        }
+        // if (!(req.user.id === req.params.id || req.user.isAdmin)) {
+        //     return errorHandler(res, "You have no permission to perform this action.", 403)
+        // }
         const user = await User.findById(req.params.id);
         if (!user) {
             return errorHandler(res, "User not found", 404);
@@ -46,6 +46,7 @@ exports.updateUser = async (req, res) => {
         user.zip = req.body.zip ? req.body.zip : user.zip
         user.city = req.body.city ? req.body.city : user.city
         user.country = req.body.country ? req.body.country : user.country
+        user.isAdmin = req.body.isAdmin
         await user.save();
         res.status(200).json({ success: true, message: "User updated successfully", user: user });
     } catch (error) {

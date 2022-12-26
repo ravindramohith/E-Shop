@@ -35,8 +35,8 @@ export class ProductsListComponent {
 
   deleteProduct(id: string) {
     this.confirmationService.confirm({
-      message: 'Are you sure that you want to delete this category?',
-      header: 'Delete Category',
+      message: 'Are you sure that you want to delete this product?',
+      header: 'Delete Product',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.productService.deleteProduct(id).subscribe((response) => {
