@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { JwtInterceptor, UsersModule } from '@frontend/users';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
@@ -15,8 +16,8 @@ import { CategoriesFormComponent } from './categories/categories-form/categories
 
 import { CardModule } from 'primeng/card';
 import { ToolbarModule } from 'primeng/toolbar';
-import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -77,8 +78,11 @@ import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detai
     TagModule,
     InputMaskModule,
     FieldsetModule,
+    UsersModule,
   ],
-  providers: [CategoriesService, MessageService, ConfirmationService],
+  providers: [CategoriesService, MessageService, ConfirmationService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

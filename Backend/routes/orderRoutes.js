@@ -5,30 +5,30 @@ const controller = require('../controllers/orderControllers');
 
 router.route('/')
     .get(
-        // authController.protect,authController.restrictToAdmin(),
+        authController.protect,authController.restrictToAdmin(),
         controller.getOrders)
     .post(
-        // authController.protect,
+        authController.protect,
         controller.placeOrder)
 
 router.route('/:id')
     .get(
-        // authController.protect,
+        authController.protect,
         mongooseIDValidation.mongooseIDValidation, controller.getOrder)
     .put(
-        // authController.protect,authController.restrictToAdmin(),
+        authController.protect,authController.restrictToAdmin(),
         mongooseIDValidation.mongooseIDValidation, controller.updateStatusOfOrder)
     .delete(
-        // authController.protect,
+        authController.protect,
         mongooseIDValidation.mongooseIDValidation, controller.deleteOrder);
 
 router.route('/get/sales')
     .get(
-        // authController.protect,authController.restrictToAdmin(),
+        authController.protect,authController.restrictToAdmin(),
         controller.getTotalSales)
 
 router.route('/getproductsofUser/:userId')
     .get(
-        // authController.protect,
+        authController.protect,
         controller.getUserOrders)
 module.exports = router

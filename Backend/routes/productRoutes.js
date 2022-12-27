@@ -7,16 +7,16 @@ const multerMiddleware = require('../middlewares/multerMiddleware');
 router.route('/')
     .get(controller.getAllProducts)
     .post(
-        // authController.protect, authController.restrictToAdmin(), 
+        authController.protect, authController.restrictToAdmin(), 
         multerMiddleware.uploadOptions.single('image'), controller.createProduct);
 
 router.route('/:id')
     .get(mongooseIDValidation.mongooseIDValidation, controller.getProduct)
     .put(
-        // authController.protect, authController.restrictToAdmin(),
+        authController.protect, authController.restrictToAdmin(),
         mongooseIDValidation.mongooseIDValidation, multerMiddleware.uploadOptions.single('image'), controller.updateProduct)
     .delete(
-        // authController.protect, authController.restrictToAdmin(),
+        authController.protect, authController.restrictToAdmin(),
         mongooseIDValidation.mongooseIDValidation, controller.deleteProduct);
 
 router.route('/get/featured/:count')

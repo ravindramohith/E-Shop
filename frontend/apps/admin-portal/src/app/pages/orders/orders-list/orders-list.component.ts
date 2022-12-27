@@ -44,9 +44,9 @@ export class OrdersListComponent {
           if (response.success) {
             this._getOrders();
             this.messageService.add({ severity: 'success', summary: 'Success', detail: response.message });
-          } else {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: response.message ? response.message : "Oops! Something went wrong..Please try again" });
           }
+        }, (error) => {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message ? error.error.message : "Oops! Something went wrong..Please try again" });
         })
       },
       reject: (type) => { }
