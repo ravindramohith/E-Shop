@@ -16,7 +16,8 @@ npm install
 ```bash 
 nx serve customer-portal
 # or
-nx server admin-portal```
+nx server admin-portal
+```
 
 ## Overview:
 - This is an E-Commerce Full Stack Web_Application by using NodeJS as Backend technolohy and Angular as front end technology by using NX monorepo.
